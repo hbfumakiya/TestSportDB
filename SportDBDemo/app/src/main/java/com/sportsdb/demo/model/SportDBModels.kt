@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SportResult(
     @SerializedName("sports")
-    val sports: List<Sport>
+    var sports: List<Sport>? = null
 )
 
 data class Sport(
@@ -51,4 +51,52 @@ data class CountryResult(
 data class Country(
     @SerializedName("name_en")
     val name_en: String
+)
+
+data class GamesResult(
+    @SerializedName("countrys")
+    val games: List<Game>
+)
+
+data class Game(
+    @SerializedName("dateFirstEvent")
+    val dateFirstEvent: String,
+    @SerializedName("idAPIfootball")
+    val idAPIfootball: String,
+    @SerializedName("idCup")
+    val idCup: String,
+    @SerializedName("idLeague")
+    val idLeague: String,
+    @SerializedName("intFormedYear")
+    val intFormedYear: String,
+    @SerializedName("strBadge")
+    val strBadge: String? = null,
+    @SerializedName("strCountry")
+    val strCountry: String,
+    @SerializedName("strCurrentSeason")
+    val strCurrentSeason: String,
+    @SerializedName("strDescriptionEN")
+    val strDescriptionEN: String? = null,
+    @SerializedName("strDivision")
+    val strDivision: String,
+    @SerializedName("strGender")
+    val strGender: String,
+    @SerializedName("strLeague")
+    val strLeague: String,
+    @SerializedName("strLeagueAlternate")
+    val strLeagueAlternate: String,
+    @SerializedName("strLocked")
+    val strLocked: String,
+    @SerializedName("strLogo")
+    var strLogo: String? = null,
+    @SerializedName("strNaming")
+    val strNaming: String,
+    @SerializedName("strPoster")
+    val strPoster: Any,
+    @SerializedName("strSport")
+    val strSport: String,
+    @SerializedName("strTrophy")
+    val strTrophy: Any,
+    @SerializedName("strWebsite")
+    val strWebsite: String
 )

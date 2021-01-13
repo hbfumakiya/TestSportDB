@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sportsdb.demo.R
 import com.sportsdb.demo.adapter.MarginItemDecoration
 import com.sportsdb.demo.adapter.SportRecyclerViewAdapter
-import com.sportsdb.demo.api.Resource.Status.*
+import com.sportsdb.demo.model.Resource.Status.*
 import com.sportsdb.demo.model.League
 import com.sportsdb.demo.viewmodel.SportsDBViewModel
 import kotlinx.android.synthetic.main.activity_main.*

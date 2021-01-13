@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.sportsdb.demo.api.ApiConstant.BASE_URL
 import com.sportsdb.demo.api.ApiConstant.HTTP_CONNECT_TIMEOUT
 import com.sportsdb.demo.api.ApiConstant.HTTP_READ_TIMEOUT
-import com.sportsdb.demo.api.Resource
+import com.sportsdb.demo.model.Resource
 import com.sportsdb.demo.model.GamesResult
 import com.sportsdb.demo.model.SportResult
 import okhttp3.OkHttpClient

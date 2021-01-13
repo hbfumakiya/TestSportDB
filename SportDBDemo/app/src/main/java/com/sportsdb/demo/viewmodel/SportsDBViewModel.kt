@@ -2,7 +2,7 @@ package com.sportsdb.demo.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.sportsdb.demo.api.Resource
+import com.sportsdb.demo.model.Resource
 import com.sportsdb.demo.api.network.SportsDBRepo
 import com.sportsdb.demo.model.GamesResult
 import com.sportsdb.demo.model.SportResult

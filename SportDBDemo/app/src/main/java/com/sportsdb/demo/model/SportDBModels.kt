@@ -60,43 +60,43 @@ data class GamesResult(
 
 data class Game(
     @SerializedName("dateFirstEvent")
-    val dateFirstEvent: String,
+    val dateFirstEvent: String?,
     @SerializedName("idAPIfootball")
-    val idAPIfootball: String,
+    val idAPIfootball: String?,
     @SerializedName("idCup")
-    val idCup: String,
+    val idCup: String?,
     @SerializedName("idLeague")
-    val idLeague: String,
+    val idLeague: String?,
     @SerializedName("intFormedYear")
-    val intFormedYear: String,
+    val intFormedYear: String?,
     @SerializedName("strBadge")
     val strBadge: String? = null,
     @SerializedName("strCountry")
-    val strCountry: String,
+    val strCountry: String?,
     @SerializedName("strCurrentSeason")
-    val strCurrentSeason: String,
+    val strCurrentSeason: String?,
     @SerializedName("strDescriptionEN")
     val strDescriptionEN: String? = null,
     @SerializedName("strDivision")
-    val strDivision: String,
+    val strDivision: String?,
     @SerializedName("strGender")
-    val strGender: String,
+    val strGender: String?,
     @SerializedName("strLeague")
-    val strLeague: String,
+    val strLeague: String?,
     @SerializedName("strLeagueAlternate")
-    val strLeagueAlternate: String,
+    val strLeagueAlternate: String?,
     @SerializedName("strLocked")
-    val strLocked: String,
+    val strLocked: String?,
     @SerializedName("strLogo")
     var strLogo: String? = null,
     @SerializedName("strNaming")
-    val strNaming: String,
+    val strNaming: String?,
     @SerializedName("strPoster")
-    val strPoster: Any,
+    val strPoster: Any?,
     @SerializedName("strSport")
-    val strSport: String,
+    val strSport: String?,
     @SerializedName("strTrophy")
-    val strTrophy: Any,
+    val strTrophy: Any?,
     @SerializedName("strWebsite")
-    val strWebsite: String
+    val strWebsite: String?
 )

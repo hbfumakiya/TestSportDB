@@ -1,12 +1,11 @@
 package com.sportsdb.demo.api.network
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.sportsdb.demo.api.ApiConstant.BASE_URL
 import com.sportsdb.demo.api.ApiConstant.HTTP_CONNECT_TIMEOUT
 import com.sportsdb.demo.api.ApiConstant.HTTP_READ_TIMEOUT
+import com.sportsdb.demo.api.Resource
 import com.sportsdb.demo.model.GamesResult
-import com.sportsdb.demo.model.LeagueResult
 import com.sportsdb.demo.model.SportResult
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -44,16 +43,15 @@ object SportsDBRepo : ISportsDBRepo {
         mRetrofit.create(SportDBApi::class.java)
     }
 
-    override fun getAllSports(): MutableLiveData<SportResult> {
-        val result = MutableLiveData<SportResult>()
+    override fun getAllSports(): MutableLiveData<Resource<SportResult>> {
+        val result = MutableLiveData<Resource<SportResult>>()
         retroClient.getAllSports().enqueue(object : Callback<SportResult> {
             override fun onFailure(call: Call<SportResult>, t: Throwable) {
-                Log.v("onFailure : ", t.toString())
+                result.value = Resource.error("getAllSports call failed", t as SportResult)
             }
 
             override fun onResponse(call: Call<SportResult>, response: Response<SportResult>) {
-                Log.v("onResponse : ", response.body().toString())
-                result.value = response.body()
+                result.value = Resource.success(response.body() as SportResult)
             }
 
         })
@@ -61,32 +59,15 @@ object SportsDBRepo : ISportsDBRepo {
         return result
     }
 
-    override fun getAllLeagues(): MutableLiveData<LeagueResult> {
-        val result = MutableLiveData<LeagueResult>()
-        retroClient.getAllLeagues().enqueue(object : Callback<LeagueResult> {
-            override fun onFailure(call: Call<LeagueResult>, t: Throwable) {
-                Log.v("onFailure : ", t.toString())
-            }
-
-            override fun onResponse(call: Call<LeagueResult>, response: Response<LeagueResult>) {
-                Log.v("onResponse : ", response.body().toString())
-                result.value = response.body()
-            }
-
-        })
-        return result
-    }
-
-    override fun getLeaguesOfGame(sportName: String): MutableLiveData<GamesResult> {
-        val result = MutableLiveData<GamesResult>()
+    override fun getLeaguesOfGame(sportName: String): MutableLiveData<Resource<GamesResult>> {
+        val result = MutableLiveData<Resource<GamesResult>>()
         retroClient.getLeaguesOfGame(sportName).enqueue(object : Callback<GamesResult> {
             override fun onFailure(call: Call<GamesResult>, t: Throwable) {
-                Log.v("onFailure : ", t.toString())
+                result.value = Resource.error("getLeaguesOfGame call failed", t as GamesResult)
             }
 
             override fun onResponse(call: Call<GamesResult>, response: Response<GamesResult>) {
-                Log.v("onResponse : ", response.body().toString())
-                result.value = response.body()
+                result.value = Resource.success(response.body() as GamesResult)
             }
         })
         return result
@@ -94,7 +75,6 @@ object SportsDBRepo : ISportsDBRepo {
 }
 
 interface ISportsDBRepo {
-    fun getAllSports(): MutableLiveData<SportResult>
-    fun getAllLeagues(): MutableLiveData<LeagueResult>
-    fun getLeaguesOfGame(sportName: String): MutableLiveData<GamesResult>
+    fun getAllSports(): MutableLiveData<Resource<SportResult>>
+    fun getLeaguesOfGame(sportName: String): MutableLiveData<Resource<GamesResult>>
 }

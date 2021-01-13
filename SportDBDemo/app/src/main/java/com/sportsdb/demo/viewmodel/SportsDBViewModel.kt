@@ -2,9 +2,9 @@ package com.sportsdb.demo.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.sportsdb.demo.api.Resource
 import com.sportsdb.demo.api.network.SportsDBRepo
 import com.sportsdb.demo.model.GamesResult
-import com.sportsdb.demo.model.LeagueResult
 import com.sportsdb.demo.model.SportResult
 
 /**
@@ -14,15 +14,11 @@ import com.sportsdb.demo.model.SportResult
 
 class SportsDBViewModel : ViewModel(), ISportDBViewModel {
 
-    override fun getAllSports(): LiveData<SportResult> {
+    override fun getAllSports(): LiveData<Resource<SportResult>> {
         return SportsDBRepo.getAllSports()
     }
 
-    override fun getAllLeagues(): LiveData<LeagueResult> {
-        return SportsDBRepo.getAllLeagues()
-    }
-
-    override fun getLeaguesOfGame(sportName: String): LiveData<GamesResult> {
+    override fun getLeaguesOfGame(sportName: String): LiveData<Resource<GamesResult>> {
         return SportsDBRepo.getLeaguesOfGame(sportName)
     }
 

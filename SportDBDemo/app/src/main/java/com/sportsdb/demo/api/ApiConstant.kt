@@ -20,11 +20,6 @@ object ApiConstant {
     // Show all sports
     const val LIST_ALL_SPORTS = "api/v1/json/1/all_sports.php"
 
-    // Show all leagues
-    const val LIST_ALL_LEAGUES = "api/v1/json/1/all_leagues.php"
-
-    // Show all countries
-    const val LIST_ALL_COUNTRIES = "api/v1/json/1/all_countries.php"
 
     // Show leagues by game name
     const val SHOW_GAMES_LEAGUES = "api/v1/json/1/search_all_leagues.php?s=Soccer"

@@ -27,11 +27,6 @@ data class Sport(
     val strSportThumbGreen: String
 )
 
-data class LeagueResult(
-    @SerializedName("leagues")
-    val leagues: List<League>
-)
-
 data class GamesResult(
     @SerializedName("countrys")
     val games: List<League>

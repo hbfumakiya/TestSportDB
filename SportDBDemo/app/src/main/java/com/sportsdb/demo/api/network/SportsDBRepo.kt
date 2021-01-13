@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.sportsdb.demo.api.ApiConstant.BASE_URL
 import com.sportsdb.demo.api.ApiConstant.HTTP_CONNECT_TIMEOUT
 import com.sportsdb.demo.api.ApiConstant.HTTP_READ_TIMEOUT
-import com.sportsdb.demo.model.CountryResult
 import com.sportsdb.demo.model.GamesResult
 import com.sportsdb.demo.model.LeagueResult
 import com.sportsdb.demo.model.SportResult
@@ -18,6 +17,11 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+
+/**
+ * Created by Hardik on 11-01-2021.
+ * this is sportdb repository structure for api calls
+ */
 
 object SportsDBRepo : ISportsDBRepo {
 
@@ -73,22 +77,7 @@ object SportsDBRepo : ISportsDBRepo {
         return result
     }
 
-    override fun getAllCountries(): MutableLiveData<CountryResult> {
-        val result = MutableLiveData<CountryResult>()
-        retroClient.getAllCountries().enqueue(object : Callback<CountryResult> {
-            override fun onFailure(call: Call<CountryResult>, t: Throwable) {
-                Log.v("onFailure : ", t.toString())
-            }
-
-            override fun onResponse(call: Call<CountryResult>, response: Response<CountryResult>) {
-                Log.v("onResponse : ", response.body().toString())
-                result.value = response.body()
-            }
-        })
-        return result
-    }
-
-    override fun getLeaguesOfGame(sportName: String?): MutableLiveData<GamesResult> {
+    override fun getLeaguesOfGame(sportName: String): MutableLiveData<GamesResult> {
         val result = MutableLiveData<GamesResult>()
         retroClient.getLeaguesOfGame(sportName).enqueue(object : Callback<GamesResult> {
             override fun onFailure(call: Call<GamesResult>, t: Throwable) {
@@ -107,7 +96,5 @@ object SportsDBRepo : ISportsDBRepo {
 interface ISportsDBRepo {
     fun getAllSports(): MutableLiveData<SportResult>
     fun getAllLeagues(): MutableLiveData<LeagueResult>
-    fun getAllCountries(): MutableLiveData<CountryResult>
-    fun getLeaguesOfGame(sportName: String?): MutableLiveData<GamesResult>
-
+    fun getLeaguesOfGame(sportName: String): MutableLiveData<GamesResult>
 }

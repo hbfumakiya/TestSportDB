@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sportsdb.demo.R
-import com.sportsdb.demo.model.Game
+import com.sportsdb.demo.model.League
 import kotlinx.android.synthetic.main.view_item_game.view.*
 
 /**
@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.view_item_game.view.*
  * this is data adapter for the app
  */
 
-class SportRecyclerViewAdapter(var data: ArrayList<Game>) :
+class SportRecyclerViewAdapter(var data: ArrayList<League>) :
     RecyclerView.Adapter<SportRecyclerViewAdapter.MyViewHolder>() {
 
 
@@ -29,14 +29,14 @@ class SportRecyclerViewAdapter(var data: ArrayList<Game>) :
         holder.bind(data[position])
     }
 
-    fun updateData(updatedData: ArrayList<Game>) {
+    fun updateData(updatedData: ArrayList<League>) {
         this.data = updatedData
         notifyDataSetChanged()
     }
 
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(sportLeagueGame: Game) {
+        fun bind(sportLeagueGame: League) {
             itemView.leagueName.text = if (!sportLeagueGame.strLeagueAlternate.isNullOrEmpty()) {
                 "${sportLeagueGame.strLeague} (${sportLeagueGame.strLeagueAlternate})"
             } else {

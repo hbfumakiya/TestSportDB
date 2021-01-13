@@ -1,7 +1,6 @@
 package com.sportsdb.demo.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.sportsdb.demo.R
 import com.sportsdb.demo.adapter.MarginItemDecoration
 import com.sportsdb.demo.adapter.SportRecyclerViewAdapter
-import com.sportsdb.demo.model.Game
+import com.sportsdb.demo.model.League
 import com.sportsdb.demo.viewmodel.SportsDBViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -59,7 +58,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     private fun loadSportLeagues(selectedSport: String) {
-        val gameList = arrayListOf<Game>()
+        val gameList = arrayListOf<League>()
         sportsDBViewModel.getLeaguesOfGame(selectedSport).observe(this@MainActivity, Observer {
             it.games.forEach { game ->
                 gameList.add(game)

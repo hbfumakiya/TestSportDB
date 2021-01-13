@@ -31,7 +31,6 @@ object ApiConstant {
 
 
     // Parameters
-
     const val PARAM_SPORT_NAME = "s"
 
 }

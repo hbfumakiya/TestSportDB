@@ -32,33 +32,12 @@ data class LeagueResult(
     val leagues: List<League>
 )
 
-data class League(
-    @SerializedName("idLeague")
-    val idLeague: String,
-    @SerializedName("strLeague")
-    val strLeague: String,
-    @SerializedName("strLeagueAlternate")
-    val strLeagueAlternate: String,
-    @SerializedName("strSport")
-    val strSport: String
-)
-
-data class CountryResult(
-    @SerializedName("countries")
-    val countries: List<Country>
-)
-
-data class Country(
-    @SerializedName("name_en")
-    val name_en: String
-)
-
 data class GamesResult(
     @SerializedName("countrys")
-    val games: List<Game>
+    val games: List<League>
 )
 
-data class Game(
+data class League(
     @SerializedName("dateFirstEvent")
     val dateFirstEvent: String?,
     @SerializedName("idAPIfootball")
